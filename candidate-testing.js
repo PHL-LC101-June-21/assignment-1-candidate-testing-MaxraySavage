@@ -23,20 +23,19 @@ function askQuestion() {
   // TODO 1.2b: Ask candidate the question and assign the response as candidateAnswer //
   const input = require(`readline-sync`);
   candidateAnswer = input.question(question).toLowerCase();
-  if(candidateAnswer === correctAnswer){
-    console.log("You got that right!");
-  } else {
-    console.log("That is incorrect.")
-  }
+  
 }
 
 function gradeQuiz(candidateAnswers) {
 
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
-
-
   let grade;
   
+  if(candidateAnswer === correctAnswer){
+    console.log("You got that right!");
+  } else {
+    console.log("That is incorrect.")
+  }
 
   return grade;
 }
