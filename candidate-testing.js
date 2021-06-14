@@ -6,7 +6,7 @@ const input = require('readline-sync');
 let candidateName = '';
 // TODO 1.2a: Define question, correctAnswer, and candidateAnswer //
 let question =  "Who was the first American woman in space? ";
-let correctAnswer = "Sally Ride";
+let correctAnswer = "sally ride";
 let candidateAnswer = "";
 let questions;
 let correctAnswers;
@@ -22,7 +22,7 @@ function askForName() {
 function askQuestion() {
   // TODO 1.2b: Ask candidate the question and assign the response as candidateAnswer //
   const input = require(`readline-sync`);
-  candidateAnswer = input.question(question);
+  candidateAnswer = input.question(question).toLowerCase();
   if(candidateAnswer === correctAnswer){
     console.log("You got that right!");
   } else {
