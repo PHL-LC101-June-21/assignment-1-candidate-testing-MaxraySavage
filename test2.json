@@ -1,0 +1,10 @@
+[
+    {
+        "question": "What kind of error will this expression trigger:\n\nlet var = input.question(\"Please pick a number between one and ten\");\n\nAnswer either syntax, runtime or logic.\n\n",
+        "answer": "Syntax"
+    },
+    {
+        "question": "How many times will the following while loop execute?\n\nlet i = 0;\nwhile(i < 10000  && i % 2 === 0){\n\ti += 1;\n\ti *= 4;\n}\n\nHINT: Don't try and do this by hand. Copy and paste the code into the console on your browser and add something extra to the code so that it counts for you.\n\n",
+        "answer": "7"
+    }
+]
