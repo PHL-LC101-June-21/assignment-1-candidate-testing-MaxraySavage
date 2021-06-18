@@ -1,4 +1,5 @@
 const input = require('readline-sync');
+const testKey = require('./test1.json')
 
 // TODO 2: modify your quiz app to ask 5 questions //
 
@@ -28,44 +29,47 @@ correctAnswers = ["Sally Ride",
 
 
 function askForName() {
-  // TODO 1.1b: Ask for candidate's name //
-  candidateName = input.question("Please enter your name: ");
+  const candidateName = input.question("Please enter your name: ");
   console.log(`Hello, ${candidateName}!`);
+  return candidateName;
 }
 
-function askQuestion() {
-  // TODO 1.2b: Ask candidate the question and assign the response as candidateAnswer //
-  for(let i =0; i< questions.length; i++){
-    candidateAnswers.push(input.question(questions[i]));
+function askQuestions(testData) {
+  const candidateAnswers = [];
+  
+  for(let i =0; i < testData.length; i++){
+    candidateAnswers.push(input.question(testData[i].question));
   }
+
+  return candidateAnswers;
 }
 
-function gradeQuiz(candidateAnswers) {
-
-  // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
-  let grade=0;
+function gradeQuiz(candidateName, testData, candidateAnswers, passingGrade = 80) {
+  const questionCount = testData.length;
+  let totalCorrectAnswers=0;
   
   console.log(`Candidate Name: ${candidateName}`);
  
-  for(let i =0; i < questions.length; i++){
-    console.log(`${i+1}) ${questions[i]}`);
+  for(let i =0; i < testData.length; i++){
+    console.log(`${i+1}) ${testData[i].question}`);
     console.log(`Your Answer: ${candidateAnswers[i]}`)
-    console.log(`Correct Answer: ${correctAnswers[i]}`)
-    if(candidateAnswers[i].toLowerCase() === correctAnswers[i].toLowerCase()){
-      grade++;
+    console.log(`Correct Answer: ${testData[i].answer}`)
+    if(candidateAnswers[i].toLowerCase() === testData[i].answer.toLowerCase()){
+      totalCorrectAnswers++;
     } 
   }
-  grade *= 20;
-  console.log(`>>> Overall Grade: ${grade}% (${grade / 20} of 5 responses correct) <<<
-  >>> Status: ${grade >= 80 ? "PASSED" : "FAILED"} <<<`);
-  return grade;
+  const finalGrade = totalCorrectAnswers / questionCount * 100
+  console.log(`>>> Overall Grade: ${finalGrade}% (${totalCorrectAnswers} of ${questionCount} responses correct) <<<
+  >>> Status: ${finalGrade >= passingGrade ? "PASSED" : "FAILED"} <<<`);
+  return finalGrade;
 }
 
 function runProgram() {
-  askForName();
-  // TODO 1.1c: Ask for candidate's name //
-  askQuestion();
-  gradeQuiz(this.candidateAnswers);
+  const candidateName = askForName();
+  
+
+  const answers = askQuestions(testKey);
+  gradeQuiz(candidateName, testKey, answers);
 }
 
 // Don't write any code below this line //
