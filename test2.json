@@ -1,6 +1,6 @@
 [
     {
-        "question": "What kind of error will this expression trigger:\n\nlet var = input.question(\"Please pick a number between one and ten\");\n\nAnswer either syntax, runtime or logic.\n\n",
+        "question": "What kind of error will this expression trigger:\n\nconst input = require('readline-sync');\nlet var = input.question(\"Please pick a number between one and ten\");\n\nAnswer either syntax, runtime or logic.\n\n",
         "answer": "Syntax"
     },
     {
