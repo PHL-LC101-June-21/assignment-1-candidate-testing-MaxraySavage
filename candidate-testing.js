@@ -55,7 +55,7 @@ function gradeQuiz(candidateAnswers) {
       numCorrect++;
     } 
   }
-  grade = 20 * numCorrect;
+  let grade = 20 * numCorrect;
   console.log(`>>> Overall Grade: ${grade}% (${numCorrect} of 5 responses correct) <<<
   >>> Status: ${grade >= 80 ? "PASSED" : "FAILED"} <<<`);
   return grade;
